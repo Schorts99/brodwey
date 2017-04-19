@@ -1,3 +1,12 @@
 <h1>Nueva obra</h1>
 
-<%= render 'form' %>
+<%= simple_form_for @play, html: { multipart: true } do |f| %>
+  <%= f.file_field :play_img %>
+  <br>
+  <%= select_tag(:category_id, options_for_select(@categories), prompt: "Categoría") %>
+  <br><br>
+  <%= f.input :title, label: "Título" %>
+  <%= f.input :description, label: "Descripción" %>
+  <%= f.input :director %>
+  <%= f.button :submit, label: "Crear" %>
+<% end %>

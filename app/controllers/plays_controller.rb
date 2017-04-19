@@ -3,7 +3,12 @@ class PlaysController < ApplicationController
   before_action :show_categories, only: [:new, :edit]
 
   def index
-    @plays = Play.all.order('created_at DESC')
+    if params[:category].blank?
+      @plays = Play.all.order('created_at DESC')
+    else
+      @category_id = Category.find_by(name: params[:category]).id
+      @plays = Play.where(category_id: @category_id).order('created_at DESC')
+    end
   end
 
   def new
@@ -40,7 +45,7 @@ class PlaysController < ApplicationController
 
   private
     def play_params
-      params.require(:play).permit(:title, :description, :director, :category_id)
+      params.require(:play).permit(:title, :description, :director, :category_id, :play_img)
     end
 
     def find_play

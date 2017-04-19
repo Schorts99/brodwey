@@ -37,6 +37,8 @@ gem 'bootstrap-sass'
 gem 'simple_form'
 # Devise para usuarios
 gem 'devise'
+# Paperclip para la subida de imágenes
+gem 'paperclip'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
