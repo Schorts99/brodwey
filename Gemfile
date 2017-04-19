@@ -33,8 +33,10 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 # Bootstrap framework para frontend
 gem 'bootstrap-sass'
-# Simple form para formas
+# Simple_form para formas
 gem 'simple_form'
+# Devise para usuarios
+gem 'devise'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

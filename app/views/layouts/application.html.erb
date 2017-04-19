@@ -9,6 +9,37 @@
   </head>
 
   <body>
-    <%= yield %>
+    <!-- Navegación -->
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+          <%= link_to "Brodwey", root_path, class: 'navbar-brand' %>
+        </div>
+
+        <ul class="nav navbar-nav navbar-right">
+          <% if user_signed_in? %>
+            <li><%= link_to "Salir", destroy_user_session_path, method: :delete %></li>
+          <% else %>
+            <li><%= link_to "Registrar", new_user_registration_path %></li>
+            <li><%= link_to "Ingresar", new_user_session_path %></li>
+          <% end %>
+        </ul>
+
+        <ul class="nav navbar-nav">
+          <% if user_signed_in? %>
+            <li><%= link_to "Agregar obra", new_play_path %></li>
+          <% end %>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Mensajes flash -->
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
+    <!-- Contenido -->
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>
