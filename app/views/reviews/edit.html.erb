@@ -1,8 +1,7 @@
 <div class="col-md-10 col-md-offset-1">
-  <div class="new-review-form">
-    <h1>Publica una reseña</h1>
-
-    <%= simple_form_for([@play, @play.reviews.build]) do |f| %>
+  <div class="edit-review-form">
+    <h1>Editar reseña</h1>
+    <%= simple_form_for([@play, @review]) do |f| %>
       <div id="rating-form">
         <label>Calificación</label>
       </div>

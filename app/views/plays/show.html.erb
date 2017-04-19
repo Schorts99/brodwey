@@ -8,6 +8,11 @@
       <h2 class="play-title"><%= @play.title %></h2>
       <h3 class="play-director"><span><em>De:</em></span> <%= @play.director %></h3>
       <h4 class="play-director"><%= @play.category.name %></h4>
+      <h4 class="avg-rating">Calificación</h4>
+
+      <div class="average-review-rating" data-score=<%= @average_review %>></div>
+
+      <span class="number-of-reviews"><em>De:</em> <%= @play.reviews.count %> reseñas</span>
       <p class="play-desc"><%= @play.description %></p>
     </div>
   </div>
@@ -18,7 +23,7 @@
   <div class="col-md-12">
     <div class="reviews">
       <h1>Reseñas</h1>
-      
+
       <%= render @play.reviews %>
 
       <div>
@@ -38,3 +43,25 @@
     <% end %>
   <% end %>
 </div>
+
+<script type="text/javascript">
+  // Muestra el puntaje de las reseñas
+	$('.review-rating').raty({
+		readOnly: true,
+
+		score: function() {
+			return $(this).attr('data-score');
+		},
+
+		path: '/assets/'
+	});
+
+  // Muestra el promedio del puntaje
+  $('.average-review-rating').raty({
+		readOnly: true,
+		path: '/assets/',
+		score: function() {
+			return $(this).attr('data-score')
+		}
+	});
+</script>

@@ -1,4 +1,14 @@
 <div class="review">
-  <p><%= review.rating %></p>
+  <div class="review-rating" data-score='<%= review.rating %>'></div>
   <p class="review-comment"><%= review.comment %></p>
+
+  <% if user_signed_in? %>
+    <% if review.user_id == current_user.id %>
+      <div class="links btn-group">
+        <%= link_to "Editar", edit_play_review_path(review.play, review), class: 'btn btn-custom' %>
+        <%= link_to "Eliminar", play_review_path(review.play, review), method: :delete,
+        data: { confirm: "¿Estás seguro?" }, class: 'btn btn-custom' %>
+      </div>
+    <% end %>
+  <% end %>
 </div>

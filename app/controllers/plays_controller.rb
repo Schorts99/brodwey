@@ -1,4 +1,5 @@
 class PlaysController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :edit]
   before_action :find_play, except: [:index, :new, :create]
   before_action :show_categories, only: [:new, :edit]
 
@@ -8,6 +9,16 @@ class PlaysController < ApplicationController
     else
       @category_id = Category.find_by(name: params[:category]).id
       @plays = Play.where(category_id: @category_id).order('created_at DESC')
+    end
+  end
+
+  def show
+    def show
+      if @play.reviews.blank?
+        @average_review = 0
+      else
+        @average_review = @play.reviews.average(:rating).round(2)
+      end
     end
   end
 
